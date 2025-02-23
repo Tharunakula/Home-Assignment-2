@@ -36,7 +36,8 @@
    * The results are stored in a dictionary.
 
 4. Printing Results:
-   * The output feature maps are printed to the console, along with the corresponding stride and padding values.
+    
+    * The output feature maps are printed to the console, along with the corresponding stride and padding values.
 
 
 **Q3. CNN Feature Extraction with Filters and Pooling**
