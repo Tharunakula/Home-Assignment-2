@@ -28,7 +28,7 @@
 
 2. Input Matrix and Kernel:
 
-  * The input matrix and kernel are defined as NumPy arrays.
+   * The input matrix and kernel are defined as NumPy arrays.
 
 3. Convolution with Different Parameters:
 
