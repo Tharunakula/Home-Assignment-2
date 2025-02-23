@@ -12,6 +12,31 @@
 
 **Task: Implement Convolution with Different Stride and Padding**
 
+1. perform_convolution(input_matrix, kernel, strides, padding) Function:
+   * Takes the input matrix, kernel, strides, and padding as arguments.
+   * Reshaping for TensorFlow:
+      * input_matrix.reshape((1, 5, 5, 1)) adds a batch dimension (1) and a channel dimension (1) to the input matrix, which is required by tf.nn.conv2d().
+      * kernel.reshape((3, 3, 1, 1)) similarly reshapes the kernel.
+   * Tensor Conversion:
+      * tf.constant() converts the NumPy arrays to TensorFlow tensors.
+   * Convolution:
+      * tf.nn.conv2d() performs the 2D convolution.
+         * strides=[1, strides, strides, 1] sets the strides for the convolution. The first and last strides are 1 (for batch and channel dimensions), and the middle strides are the specified strides value.
+         * padding=padding sets the padding type.
+   * Reshaping for Output:
+      * output_tensor.numpy().reshape(output_tensor.shape[1], output_tensor.shape[2]) removes the batch and channel dimensions from the output tensor and converts it back to a NumPy array.
+
+2. Input Matrix and Kernel:
+
+  * The input matrix and kernel are defined as NumPy arrays.
+
+3. Convolution with Different Parameters:
+
+   * The perform_convolution() function is called with different combinations of strides and padding.
+   * The results are stored in a dictionary.
+
+4. Printing Results:
+   * The output feature maps are printed to the console, along with the corresponding stride and padding values.
 
 
 **Q3. CNN Feature Extraction with Filters and Pooling**
@@ -20,9 +45,9 @@
 
 1. Import Libraries:
 
-  * cv2 (OpenCV): For image loading and Sobel filter application.
-  * numpy: For numerical operations (especially with image arrays).
-  * matplotlib.pyplot: For displaying the images.
+   * cv2 (OpenCV): For image loading and Sobel filter application.
+   * numpy: For numerical operations (especially with image arrays).
+   * matplotlib.pyplot: For displaying the images.
  
 2. edge_detection_sobel(image_path) Function: 
 
@@ -82,8 +107,8 @@ Call the edge_detection_sobel() function.
 
 5. Print Results:
 
-       * input_matrix[0, :, :, 0] removes the batch and channel dimensions to print the original matrix.
-       * max_pool.numpy()[0, :, :, 0] and avg_pool.numpy()[0, :, :, 0] extract the NumPy arrays from the TensorFlow tensors and remove the batch and channel dimensions for printing.
+    * input_matrix[0, :, :, 0] removes the batch and channel dimensions to print the original matrix.
+    * max_pool.numpy()[0, :, :, 0] and avg_pool.numpy()[0, :, :, 0] extract the NumPy arrays from the TensorFlow tensors and remove the batch and channel dimensions for printing.
 
 **Q4. Implementing and Comparing CNN Architectures**
 
@@ -96,19 +121,19 @@ Call the edge_detection_sobel() function.
 
 2. padding='same':
 
-   * I've added padding='same' to the Conv2D layers (except the first one) where the kernel size is (3, 3). Without padding, the spatial dimensions of the feature maps shrink after each convolution, which can lead to a smaller-than-expected output shape before the Flatten layer. padding='same' ensures that the output feature maps have the same spatial dimensions as the input feature maps for those layers, which is more in line with the usual behavior of AlexNet-like architectures.
+    * I've added padding='same' to the Conv2D layers (except the first one) where the kernel size is (3, 3). Without padding, the spatial dimensions of the feature maps shrink after each convolution, which can lead to a smaller-than-expected output shape before the Flatten layer. padding='same' ensures that the output feature maps have the same spatial dimensions as the input feature maps for those layers, which is more in line with the usual behavior of AlexNet-like architectures.
 
 3. Model Summary:
 
-   * alexnet_model.summary() prints a detailed summary of the model's architecture, including the layer types, output shapes, and number of parameters.
+    * alexnet_model.summary() prints a detailed summary of the model's architecture, including the layer types, output shapes, and number of parameters.
 
 4. Input shape:
 
-   * The default input shape is set to (227, 227, 3) which is a common input size for AlexNet. You can change this if your images have a different size.
+    * The default input shape is set to (227, 227, 3) which is a common input size for AlexNet. You can change this if your images have a different size.
 
 5. Num Classes:
 
-  * The default number of classes is set to 10. If you are working on a classification task with a different number of classes, you can modify this parameter.
+   * The default number of classes is set to 10. If you are working on a classification task with a different number of classes, you can modify this parameter.
 
 **Task 2: Implement a Residual Block and ResNet**
 
@@ -133,7 +158,7 @@ Call the edge_detection_sobel() function.
 
 4. Input shape and number of classes:
 
-* The default input shape is (224, 224, 3) and the default number of classes is 10. These can be adjusted when calling create_resnet_like_model() to match your specific dataset.
+   * The default input shape is (224, 224, 3) and the default number of classes is 10. These can be adjusted when calling create_resnet_like_model() to match your specific dataset.
 
 5. Padding:
 
