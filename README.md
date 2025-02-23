@@ -109,3 +109,32 @@ Call the edge_detection_sobel() function.
 5. Num Classes:
 
   * The default number of classes is set to 10. If you are working on a classification task with a different number of classes, you can modify this parameter.
+
+**Task 2: Implement a Residual Block and ResNet**
+
+1. residual_block() Function:
+
+     * Implements the residual block as described in the problem description.
+     * Applies two Conv2D layers with ReLU activation.
+     * Uses layers.Add() to add the input tensor to the output of the second Conv2D layer (the skip connection).
+     * Applies a ReLU activation after the skip connection.
+
+2. create_resnet_like_model() Function:
+    * Creates the ResNet-like model.
+    * Uses an initial Conv2D layer.
+    * Applies two residual_block() calls.
+    * Adds a maxpooling layer after the first convolutional layer, as is common in ResNet architectures.
+    * Adds Flatten, Dense (128 neurons), and the output layer.
+    * Uses the functional API (models.Model(inputs=inputs, outputs=outputs)) to create the model, which is more flexible than the Sequential API for complex architectures like ResNet.
+
+3. Model Summary:
+
+   * resnet_model.summary() prints the model summary.
+
+4. Input shape and number of classes:
+
+* The default input shape is (224, 224, 3) and the default number of classes is 10. These can be adjusted when calling create_resnet_like_model() to match your specific dataset.
+
+5. Padding:
+
+    *Padding is set to 'same' for the initial convolutional layer and the residual block convolutional layers. This ensures that the spatial dimensions of the feature maps are preserved, making it easier to add the skip connection.
